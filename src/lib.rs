@@ -33,4 +33,30 @@ impl Matrix {
 		self.matrix[((row-1) * self.size + (col - 1)) as usize] = val
 	}
 
+	// Returns a submatrix with *row* and *col* removed
+	pub fn compl(&mut self, row: u8, col:u8) -> Matrix {
+		let mut mat: Matrix = Matrix::New(self.size - 1);
+
+		let mut row_1: u8;
+		let mut col_1: u8;
+
+		for x in 1..=mat.size {
+			for y in 1..=mat.size {
+				row_1 = x;
+				col_1 = y;
+
+				if x >= row {
+					row_1 += 1;
+				}
+
+				if y >= col {
+					col_1 += 1
+				}
+
+				mat.set(row_1, col_1, self.get(x, y))
+			}
+		}
+
+		mat
+	}
 }
