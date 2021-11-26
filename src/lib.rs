@@ -28,4 +28,9 @@ impl Matrix {
 		self.matrix[((row-1) * self.size + (col - 1)) as usize]
 	}
 
+	// Write the data with row and column coordinates
+	pub fn set(&mut self, row: u8, col:u8, val:f64) {
+		self.matrix[((row-1) * self.size + (col - 1)) as usize] = val
+	}
+
 }
