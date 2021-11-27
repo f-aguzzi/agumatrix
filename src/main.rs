@@ -48,6 +48,7 @@ impl Sandbox for Agumatrix {
         .push(
             Text::new("AguMatrix")
             .size(30)
+            .color([255.0 ,85.0 ,0.0])
         )
         .push(
             text_input::TextInput::new(&mut self.input, "Write your matrix here", &self.matrix, Message::TextInputChanged)
