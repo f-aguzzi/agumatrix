@@ -9,7 +9,7 @@ pub struct Matrix {
 impl Matrix {
 
 	// Constructor
-	pub fn New(s: u8) -> Matrix {
+	pub fn new(s: u8) -> Matrix {
 		let mut mat: Vec<f64> = Vec::new();
 		
 		for x in 0..pow(s,2) {
@@ -35,7 +35,7 @@ impl Matrix {
 
 	// Returns a submatrix with *row* and *col* removed
 	fn compl(&mut self, row: u8, col:u8) -> Matrix {
-		let mut mat: Matrix = Matrix::New(self.size - 1);
+		let mut mat: Matrix = Matrix::new(self.size - 1);
 
 		let mut row_1: u8;
 		let mut col_1: u8;
@@ -67,7 +67,7 @@ impl Matrix {
 
 		// basic case
 		if self.size == 2 {
-			deter += (self.get(1,2) * self.get(2,1) - self.get(1,1) * self.get(2,2))
+			deter += self.get(1,2) * self.get(2,1) - self.get(1,1) * self.get(2,2)
 		}
 
 		// recursion
@@ -86,5 +86,5 @@ impl Matrix {
 
 // Placeholder function
 pub fn parse(string: String) -> Matrix {
-	return Matrix::New(2);
+	return Matrix::new(2);
 }
