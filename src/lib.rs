@@ -1,7 +1,7 @@
 use num::pow;
 
 // The matrix is represented as a monodimensional array
-struct Matrix {
+pub struct Matrix {
 	matrix: Vec<f64>,
 	size: u8	// Square matrix, sized (size * size)
 }
@@ -24,17 +24,17 @@ impl Matrix {
 	}
 
 	// Access the data with row and column coordinates
-	pub fn get(&mut self, row: u8, col:u8) -> f64 {
+	fn get(&mut self, row: u8, col:u8) -> f64 {
 		self.matrix[((row-1) * self.size + (col - 1)) as usize]
 	}
 
 	// Write the data with row and column coordinates
-	pub fn set(&mut self, row: u8, col:u8, val:f64) {
+	fn set(&mut self, row: u8, col:u8, val:f64) {
 		self.matrix[((row-1) * self.size + (col - 1)) as usize] = val
 	}
 
 	// Returns a submatrix with *row* and *col* removed
-	pub fn compl(&mut self, row: u8, col:u8) -> Matrix {
+	fn compl(&mut self, row: u8, col:u8) -> Matrix {
 		let mut mat: Matrix = Matrix::New(self.size - 1);
 
 		let mut row_1: u8;
@@ -80,4 +80,11 @@ impl Matrix {
 		deter
 
 	}
+
+}
+
+
+// Placeholder function
+pub fn parse(string: String) -> Matrix {
+	return Matrix::New(2);
 }
