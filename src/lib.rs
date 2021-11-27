@@ -84,7 +84,37 @@ impl Matrix {
 }
 
 
-// Placeholder function
-pub fn parse(string: String) -> Matrix {
-	return Matrix::new(2);
+// Parser function
+pub fn parse(s: String) -> Matrix {
+	
+	let split = s.split(";");
+	let vec = split.collect::<Vec<&str>>();
+
+	let mut mat = Matrix {
+		matrix: Vec::new(),
+		size: vec.len() as u8
+	};
+
+	let mut numbers: Vec<f64> = Vec::new();
+
+	for x in 0..vec.len() {
+		let s2 = vec[x].split(",").collect::<Vec<&str>>();
+
+        for y in s2 {
+            let temp = String::from(y).parse::<f64>();
+
+            match temp {
+                Ok(number) => numbers.push(number),
+                Err(_) => numbers.push(0.0),
+            }
+            
+        }
+	}
+
+	for x in 0..pow(vec.len(), 2) {
+        mat.matrix.push(numbers[x]);
+    }
+
+	mat
+
 }
