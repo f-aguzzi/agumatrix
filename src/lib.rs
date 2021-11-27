@@ -12,7 +12,7 @@ impl Matrix {
 	pub fn new(s: u8) -> Matrix {
 		let mut mat: Vec<f64> = Vec::new();
 		
-		for x in 0..pow(s,2) {
+		for _x in 0..pow(s,2) {
 			mat.push(0.0);
 		}
 
