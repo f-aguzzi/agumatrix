@@ -1,4 +1,4 @@
-use iced::{Sandbox, Align, Element, button, text_input, Column, Text};
+use iced::{Sandbox, Align, Element, button, text_input, Column, Text, Settings};
 
 mod lib;
 use lib::parse;
@@ -52,11 +52,22 @@ impl Sandbox for Agumatrix {
         .push(
             text_input::TextInput::new(&mut self.input, "Write your matrix here", &self.matrix, Message::TextInputChanged)
         )
+        .push(
+            button::Button::new(&mut self.calculate_button, Text::new("Calculate determinant"))
+                .on_press(Message::CalculateButtonPressed)
+                .padding(12)
+        )
+        .push(
+            Text::new(self.determinant.to_string()).size(20)
+        )
         .into()
     }
 }
 
 
 fn main() {
-    println!("Hello, world!");
+    Agumatrix::run(Settings {
+        antialiasing: true,
+        ..Settings::default()
+    })
 }
