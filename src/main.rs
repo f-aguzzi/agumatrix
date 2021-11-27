@@ -47,8 +47,11 @@ impl Sandbox for Agumatrix {
         .align_items(Align::Center)
         .push(
             Text::new("AguMatrix")
-            .size(30)
-            .color([255.0 ,85.0 ,0.0])
+            .size(60)
+        )
+        .push(
+            Text::new("Insert comma-separated elements in rows separated by ';':")
+            .size(20)
         )
         .push(
             text_input::TextInput::new(&mut self.input, "Write your matrix here", &self.matrix, Message::TextInputChanged)
@@ -59,7 +62,12 @@ impl Sandbox for Agumatrix {
                 .padding(12)
         )
         .push(
-            Text::new(self.determinant.to_string()).size(20)
+            Text::new("The determinant is: ")
+            .size(30)
+        )
+        .push(
+            Text::new(self.determinant.to_string())
+            .size(50)
         )
         .into()
     }
